@@ -9,7 +9,7 @@
 <body>
     <main>
         <h1>Breadflation - Measuring inflation with loaves of bread</h1>
-            
+
         <div class="present-day">
             <h2>How many loaves of bread can your paycheck buy?</h2>
             <div class="user-input" id="salary">
@@ -18,6 +18,15 @@
             </div>
             <div class="calculated-output-display"></div>           
         </div>
+
+        <div class="historical">
+            <h2>How many loaves of bread could a historical paycheck have bought?</h2>
+            <div class="user-input" id="year-picker"></div>
+            // Add a state picker?
+            <div class="calculated-output-display">
+                <div class="min-wage-display"></div> //The min wage in YYYY was $xx. A standard paycheck would have been $zz.
+                <div class="loaves-display"></div>
+            </div>
         </div>
     </main>
 </body>
