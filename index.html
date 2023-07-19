@@ -13,11 +13,16 @@
 
         <div class="present-day">
             <h2>How many loaves of bread can your paycheck buy?</h2>
-            <div class="user-input" id="salary">
-                <p>Enter your paycheck amount</p>
-                <input>
+            <div class="user-input" id="user-paycheck">
+                <p>
+                    <label>Enter your paycheck amount (nearest dollar):
+                    <input type="number" min="1" max="9999" value="2500"></label>
+                    <input type="submit" value="Submit">
+                </p>
             </div>
-            <div class="calculated-output-display"></div>           
+            <div class="calculated-output-display">
+                <p>The current average cost of a loaf is</p>
+            </div>           
         </div>
 
         <div class="historical">
