@@ -15,17 +15,17 @@
             <h2>How many loaves of bread can your paycheck buy?</h2>
             <div class="user-input" id="user-paycheck">
                 <p>
-                    <label>Enter your paycheck amount (nearest dollar):
-                    <input type="number" min="1" max="9999" value="2500"></label>
+                    <label>Enter your hourly wage (nearest dollar):
+                    <input type="number" min="1" max="999" value="10"></label>
                     <input type="submit" value="Submit">
                 </p>
             </div>
             <div class="calculated-output-display">
                 <p>The current average cost of a loaf is
-                    <div>call API?</div>
+                    <div id="price-of-bread">call API? $1.759</div>
                     Thus your paycheck is able to buy
-                    <div>calculated number</div> loaves of bread.
-                    <div>display bread emojis</div>
+                    <div class="calculated-loaves" id="user-loaves">#</div> loaves of bread.
+                    <div>display bread emojis</div> <!--How to display number of bread emojis that correspond to whole number calculated?-->
                 </p>
             </div>           
         </div>
@@ -33,9 +33,10 @@
         <div class="historical">
             <h2>How many loaves of bread could a historical paycheck have bought?</h2>
             <div class="user-input" id="year-picker"></div>
-            // Add a state picker?
+            <!--Add a state picker?-->
             <div class="calculated-output-display">
-                <div class="min-wage-display"></div> //The min wage in YYYY was $xx. A standard paycheck would have been $zz.
+                <div class="min-wage-display"></div>
+                <!--The min wage in YYYY was $xx. A standard paycheck would have been $zz.-->
                 <div class="loaves-display"></div>
             </div>
         </div>
