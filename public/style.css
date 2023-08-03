@@ -26,11 +26,12 @@ p {
 }
 
 .display-number {
+    margin: 5px;
     font-size: 24px;
     font-weight: 700;
 }
 
-.btn {
+button {
     background-image: linear-gradient(to bottom right, #003f5c, #bc5090);
     border: none;
     border-radius: 16px;
@@ -47,15 +48,20 @@ p {
     margin: 10px 0;
 }
 
-.btn:hover,
-.btn:focus {
+button:hover,
+button:focus {
     background-image: linear-gradient(to top left, #003f5c, #bc5090);
     color: #fff;
     transition: 0.4s;
 }
 
+[value] {
+    color: gray;
+}
+
 .card {
-    background-color: #003f5c;
+    /* background-color: #003f5c; */
+    background-image: linear-gradient(to bottom right, #003f5c, #003f5c, #bc5090);
     color: #fff;
     margin: 10px 0;
     border-radius: 16px;

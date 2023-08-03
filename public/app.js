@@ -4,6 +4,10 @@ const apiKey = '1baef04384504c8bb691c2a06e542dd9';
 const apiUrl = 'https://api.bls.gov/publicAPI/v2/timeseries/data/APU0000702111?registrationkey=';
 
 const currentPrice = document.getElementById('price-of-bread');
+const userWageButton = document.getElementById('submit');
+
+userWageButton.addEventListener('click', onWageSubmit, false);
+
 //Calculation based on latest average price of white bread in a US city
 function onWageSubmit() {
     const userHourlyWage = document.getElementById('user-hourly-wage');
