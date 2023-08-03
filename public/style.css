@@ -55,10 +55,6 @@ button:focus {
     transition: 0.4s;
 }
 
-[value] {
-    color: gray;
-}
-
 .card {
     /* background-color: #003f5c; */
     background-image: linear-gradient(to bottom right, #003f5c, #003f5c, #bc5090);
