@@ -22,18 +22,17 @@
         <div class="present-day">
             <h2>How many loaves of bread can your paycheck buy?</h2>
             <div class="user-input">
-                <label>Enter your hourly wage: $</label>
-                <input type="number" min="1" max="999" step="0.01" id="user-hourly-wage" value="7.25">
-                <button type="submit" id="submit">Submit</button>
+                <label for="user-hourly-wage">Enter your hourly wage: $</label>
+                <input type="number" min="1" max="999" step="0.01" id="user-hourly-wage" placeholder="7.25">
+                <button type="submit" id="submit">Submit</button>                
             </div>
             <div class="calculated-output-display card">
                 <p>The current average cost of a loaf is</p>
                 <div class="display-number" id="price-of-bread"></div>
                 <p>and your hourly wage can buy you</p>
                     <div class="calculated-loaves display-number" id="user-loaves"></div>
-                    <!-- <div>display bread emojis</div> -->
+                    <!-- <div>Display corresponding bread emojis ... but how???</div> -->
                 </div>
-                <!--How to display number of bread emojis that correspond to whole number calculated?-->
             </div>
         </div>
 
