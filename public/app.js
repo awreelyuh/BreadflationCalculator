@@ -4,9 +4,12 @@ const apiKey = '1baef04384504c8bb691c2a06e542dd9';
 const apiUrl = 'https://api.bls.gov/publicAPI/v2/timeseries/data/APU0000702111?registrationkey=';
 
 const currentPrice = document.getElementById('price-of-bread');
+//Calculation based on latest average price of white bread in a US city
+function onWageSubmit() {
+    const userHourlyWage = document.getElementById('user-hourly-wage');
+    const calculatedLoaves = document.getElementById('user-loaves');
 
-//Latest average price of white bread in a US city
-fetch(apiUrl + apiKey + '&latest=true')
+    fetch(apiUrl + apiKey + '&latest=true')
         .then(response => {
             if (!response.ok) {
                 console.error(error);
@@ -15,12 +18,16 @@ fetch(apiUrl + apiKey + '&latest=true')
                 .then(json => {
                     let latestBreadPrice = json["Results"]["series"][0]["data"][0]["value"];
                     currentPrice.innerHTML = "$" + latestBreadPrice;
+                    let userBread = calculateLoaves(userHourlyWage.value, latestBreadPrice);
+                    calculatedLoaves.innerHTML = userBread + ' whole loaves of bread';
                 })
                 .catch(error => { console.error(error); })
         })
-    .catch(error => { console.error(error); })
+        .catch(error => { console.error(error); })
+    return false;
+}
 
-//Average price of white bread in a US city, 1980 to 2023
+//Calculation based on 1980-2023 data for average price of white bread in a US city
 fetch(apiUrl + apiKey)
     .then(response => {
         if (!response.ok) {
@@ -30,7 +37,7 @@ fetch(apiUrl + apiKey)
             .then(json => {
                 console.log(json);
                 let loafCost = json["Results"]["series"];
-                console.log(loafCost[0].data[0].value);
+                console.log(loafCost[0].data[1].value);
                 // series.data.forEach(period => {
                 //     fetch(period.value)
                 //         .then(response => {
