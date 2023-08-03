@@ -43,3 +43,7 @@ fetch(apiUrl + apiKey)
             .catch(error => { console.error(error); });
     })
     .catch(error => { console.error(error); });
+
+function calculateLoaves(hourlyWage, breadPrice) {
+    return Math.trunc(hourlyWage / breadPrice);
+}
