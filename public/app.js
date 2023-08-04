@@ -1,7 +1,7 @@
 'use strict'
 
-const apiKey = '1baef04384504c8bb691c2a06e542dd9';
-const apiUrl = 'https://api.bls.gov/publicAPI/v2/timeseries/data/APU0000702111?registrationkey=';
+const blsApiKey = '1baef04384504c8bb691c2a06e542dd9';
+const blsApiUrl = 'https://api.bls.gov/publicAPI/v2/timeseries/data/APU0000702111?registrationkey=';
 
 const userWageButton = document.getElementById('submit--latest');
 userWageButton.addEventListener('click', onWageSubmit, false);
@@ -15,7 +15,7 @@ function onWageSubmit() {
     const latestPrice = document.getElementById('price-of-bread--latest');
     const calculatedLoaves = document.getElementById('user-loaves');
 
-    fetch(apiUrl + apiKey + '&latest=true')
+    fetch(blsApiUrl + blsApiKey + '&latest=true')
         .then(response => {
             if (!response.ok) {
                 console.error(error);
@@ -41,7 +41,7 @@ function onDateSubmit() {
     const histCalculatedLoaves = document.getElementById('historical-loaves');
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-    fetch(apiUrl + apiKey)
+    fetch(blsApiUrl + blsApiKey)
         .then(response => {
             if (!response.ok) {
                 console.error(error);
@@ -51,7 +51,7 @@ function onDateSubmit() {
                     const dateInput = convertDate(date);
                     // console.log("Month name: " + monthNames[dateInput.getMonth()]);
                     // console.log("Year: " + dateInput.getFullYear());                    
-                    fetch(apiUrl + apiKey + `&startyear=${dateInput.getFullYear()}` + `&endyear=${dateInput.getFullYear()}`)
+                    fetch(blsApiUrl + blsApiKey + `&startyear=${dateInput.getFullYear()}` + `&endyear=${dateInput.getFullYear()}`)
                         .then(response => {
                             response.json()
                                 .then(json => {
