@@ -1,4 +1,5 @@
 'use strict'
+import minimumWage from "./minimumWageList.js";
 
 const userWageButton = document.getElementById('submit--latest');
 userWageButton.addEventListener('click', onWageSubmit, false);
@@ -39,7 +40,7 @@ function onWageSubmit() {
 //Calculation based on 1980-2023 data for average price of white bread in a US city
 function onDateSubmit() {
     const date = document.getElementById('date-picker').value;
-    const histMinWage = document.getElementById('min-wage');
+    const histMinWage = document.getElementById('min-wage--historical');
     const historicalPrice = document.getElementById('price-of-bread--historical');
     const histCalculatedLoaves = document.getElementById('historical-loaves');
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -59,12 +60,18 @@ function onDateSubmit() {
                             response.json()
                                 .then(json => {
                                     const histJsonData = json['Results']['series'][0]['data'];
-                                    const selectedData = histJsonData.filter((entry) => entry.periodName === monthNames[dateInput.getMonth()]);
+                                    const selectedBreadData = histJsonData.filter((entry) => entry.periodName === monthNames[dateInput.getMonth()]);
 
                                     const textForHistPrice = document.getElementById('text-price-bread--historical');
                                     textForHistPrice.innerHTML = `The average cost of a loaf of white bread in ${monthNames[dateInput.getMonth()]} ${dateInput.getFullYear()} was `
-                                    historicalPrice.innerHTML = '$' + selectedData[0].value;
+                                    historicalPrice.innerHTML = '$' + selectedBreadData[0].value;
 
+                                    const selectedWageData = minimumWage.filter((entry) => entry.Year === dateInput.getFullYear().toString());
+                                    const textForHistMinWage = document.getElementById('text-min-wage--historical');
+                                    textForHistMinWage.innerHTML = 'while the minimum wage in the same year was ';
+                                    histMinWage.innerHTML = '$' + selectedWageData[0].FederalMinimumWage;
+                                    
+                                    let histBread = calculateLoaves(selectedWageData[0].FederalMinimumWage, selectedBreadData[0].value)
                                     
                                 })
                                 .catch(error => { console.error(error); })
