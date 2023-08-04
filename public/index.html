@@ -38,7 +38,11 @@
 
         <div class="historical">
             <h2>How many loaves of bread could a historical paycheck have bought?</h2>
-            <div class="user-input" id="year-picker"></div>
+            <div class="user-input">
+                <label for="date-picker">Select a date:</label>
+                <input type="date" id="date-picker" min="1980-01-01">
+                <button type="submit" id="submit--historical">Submit</button>
+            </div>
             <!--Add a state picker?-->
             <div class="calculated-output-display">
                 <div class="min-wage-display"></div>

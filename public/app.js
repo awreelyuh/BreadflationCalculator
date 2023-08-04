@@ -6,6 +6,9 @@ const apiUrl = 'https://api.bls.gov/publicAPI/v2/timeseries/data/APU0000702111?r
 const userWageButton = document.getElementById('submit--latest');
 userWageButton.addEventListener('click', onWageSubmit, false);
 
+const dateButton = document.getElementById('submit--historical');
+dateButton.addEventListener('click', onDateSubmit, false);
+
 //Calculation based on latest average price of white bread in a US city
 function onWageSubmit() {
     const userHourlyWage = document.getElementById('user-hourly-wage');
