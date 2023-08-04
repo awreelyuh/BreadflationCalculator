@@ -73,6 +73,7 @@ function onDateSubmit() {
                                     
                                     let histBread = calculateLoaves(selectedWageData[0].FederalMinimumWage, selectedBreadData[0].value)
                                     
+                                    document.getElementById('text-historical-loaves').innerHTML = 'which could have bought '; histCalculatedLoaves.innerHTML = `${histBread} whole loaves of bread`
                                 })
                                 .catch(error => { console.error(error); })
                         })
