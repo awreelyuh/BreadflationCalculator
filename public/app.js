@@ -65,7 +65,7 @@ function onDateSubmit() {
                                     textForHistPrice.innerHTML = `The average cost of a loaf of white bread in ${monthNames[dateInput.getMonth()]} ${dateInput.getFullYear()} was `
                                     historicalPrice.innerHTML = '$' + selectedData[0].value;
 
-                                    fetchFred();
+                                    
                                 })
                                 .catch(error => { console.error(error); })
                         })
@@ -77,25 +77,6 @@ function onDateSubmit() {
     return false;
 }
 
-async function fetchFred() {
-    try {
-        const response = await fetch(fredApiUrl);
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
-        response.json()
-            .then(json => {
-                //let juice = json["observations"];
-                console.log(json);
-            })
-            .catch(error => { console.error(error); });
-    } catch (error_1) {
-        console.error(error_1);
-    }
-
-}
-
-
 function calculateLoaves(hourlyWage, breadPrice) {
     return Math.trunc(hourlyWage / breadPrice);
 }
@@ -104,3 +85,19 @@ function convertDate(date) {
     const [year, month, day] = date.split('-');
     return new Date(year, month - 1, day);
 }
+
+// async function fetchFred() {
+//     try {
+//         const response = await fetch(fredApiUrl);
+//         if (!response.ok) {
+//             throw new Error("Network response was not ok");
+//         }
+//         response.json()
+//             .then(json => {
+//                 console.log(json);
+//             })
+//             .catch(error => { console.error(error); });
+//     } catch (error_1) {
+//         console.error(error_1);
+//     }
+// }
