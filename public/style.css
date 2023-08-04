@@ -3,10 +3,19 @@ body {
     line-height: 1.5;
     margin: 16px;
     font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 main {
     margin: 16px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 h1 {
