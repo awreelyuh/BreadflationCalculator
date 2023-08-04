@@ -34,28 +34,44 @@ function onWageSubmit() {
 }
 
 //Calculation based on 1980-2023 data for average price of white bread in a US city
-fetch(apiUrl + apiKey)
-    .then(response => {
-        if (!response.ok) {
-            console.error(error);
-        }
-        response.json()
-            .then(json => {
-                console.log(json);
-                let loafCost = json["Results"]["series"];
-                console.log(loafCost[0].data[1].value);
-                // series.data.forEach(period => {
-                //     fetch(period.value)
-                //         .then(response => {
-                //             response.json()
-                //                 .then(json => { console.log(json); })
-                //                 .catch(error => { console.error(error); })
-                //         }).catch(error => { console.error(error); })
-                // })
-            })
-            .catch(error => { console.error(error); });
-    })
-    .catch(error => { console.error(error); });
+function onDateSubmit() {
+    const date = document.getElementById('date-picker').value;
+    const histMinWage = document.getElementById('min-wage');
+    const historicalPrice = document.getElementById('price-of-bread--historical');
+    const histCalculatedLoaves = document.getElementById('historical-loaves');
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    fetch(apiUrl + apiKey)
+        .then(response => {
+            if (!response.ok) {
+                console.error(error);
+            }
+            response.json()
+                .then(json => {
+                    const dateInput = convertDate(date);
+                    // console.log("Month name: " + monthNames[dateInput.getMonth()]);
+                    // console.log("Year: " + dateInput.getFullYear());                    
+                    fetch(apiUrl + apiKey + `&startyear=${dateInput.getFullYear()}` + `&endyear=${dateInput.getFullYear()}`)
+                        .then(response => {
+                            response.json()
+                                .then(json => {
+                                    const histJsonData = json['Results']['series'][0]['data'];
+                                    const selectedData = histJsonData.filter((entry) => entry.periodName === monthNames[dateInput.getMonth()]);
+                                    
+                                    const textForHistPrice = document.getElementById('text-price-bread--historical');
+                                    textForHistPrice.innerHTML = `The average cost of a loaf of white bread in ${monthNames[dateInput.getMonth()]} ${dateInput.getFullYear()} was `
+                                    historicalPrice.innerHTML = '$' + selectedData[0].value;
+
+                                })
+                                .catch(error => { console.error(error); })
+                        })
+                        .catch(error => { console.error(error); })
+                })
+                .catch(error => { console.error(error); })
+        })
+        .catch(error => { console.error(error); })
+    return false;
+}
 
 function calculateLoaves(hourlyWage, breadPrice) {
     return Math.trunc(hourlyWage / breadPrice);
