@@ -60,3 +60,8 @@ fetch(apiUrl + apiKey)
 function calculateLoaves(hourlyWage, breadPrice) {
     return Math.trunc(hourlyWage / breadPrice);
 }
+
+function convertDate(date) {
+    const [year, month, day] = date.split('-');
+    return new Date(year, month - 1, day);
+}
