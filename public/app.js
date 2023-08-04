@@ -3,14 +3,13 @@
 const apiKey = '1baef04384504c8bb691c2a06e542dd9';
 const apiUrl = 'https://api.bls.gov/publicAPI/v2/timeseries/data/APU0000702111?registrationkey=';
 
-const currentPrice = document.getElementById('price-of-bread');
-const userWageButton = document.getElementById('submit');
-
+const userWageButton = document.getElementById('submit--latest');
 userWageButton.addEventListener('click', onWageSubmit, false);
 
 //Calculation based on latest average price of white bread in a US city
 function onWageSubmit() {
     const userHourlyWage = document.getElementById('user-hourly-wage');
+    const latestPrice = document.getElementById('price-of-bread--latest');
     const calculatedLoaves = document.getElementById('user-loaves');
 
     fetch(apiUrl + apiKey + '&latest=true')
@@ -20,8 +19,8 @@ function onWageSubmit() {
             }
             response.json()
                 .then(json => {
-                    let latestBreadPrice = json["Results"]["series"][0]["data"][0]["value"];
-                    currentPrice.innerHTML = "$" + latestBreadPrice;
+                    let latestBreadPrice = json['Results']['series'][0]['data'][0]['value'];
+                    latestPrice.innerHTML = '$' + latestBreadPrice;
                     let userBread = calculateLoaves(userHourlyWage.value, latestBreadPrice);
                     calculatedLoaves.innerHTML = userBread + ' whole loaves of bread';
                 })

@@ -19,16 +19,16 @@
         <h1>Breadflation Calculator</h1>
         Measuring inflation with loaves of bread
 
-        <div class="present-day">
-            <h2>How many loaves of bread can your paycheck buy?</h2>
+        <div class="latest">
+            <h2>How many loaves of bread can you currently buy?</h2>
             <div class="user-input">
                 <label for="user-hourly-wage">Enter your hourly wage: $</label>
-                <input type="number" min="1" max="999" step="0.01" id="user-hourly-wage" placeholder="7.25">
-                <button type="submit" id="submit">Submit</button>                
+                <input type="number" id="user-hourly-wage" min="1" max="999" step="0.01" placeholder="7.25">
+                <button type="submit" id="submit--latest">Submit</button>                
             </div>
             <div class="calculated-output-display card">
-                <p>The current average cost of a loaf is</p>
-                <div class="display-number" id="price-of-bread"></div>
+                <p>The current average cost of a loaf of white bread is</p>
+                <div class="display-number" id="price-of-bread--latest"></div>
                 <p>and your hourly wage can buy you</p>
                     <div class="calculated-loaves display-number" id="user-loaves"></div>
                     <!-- <div>Display corresponding bread emojis ... but how???</div> -->
