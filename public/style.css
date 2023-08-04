@@ -11,22 +11,22 @@ body {
 
 main {
     margin: 16px;
-    width: 500px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+    width: 70%;
 }
 
 h1 {
     font-weight: 700;
     line-height: 1;
-    color:#003f5c;
+    color: #003f5c;
 }
 
 h2 {
     font-weight: 500;
-    color:#58508d;
+    color: #58508d;
 }
 
 p {
@@ -71,4 +71,15 @@ button:focus {
     margin: 10px 0;
     border-radius: 16px;
     padding: 16px clamp(12px, 16px, 18px)
+}
+
+@media only screen and (min-width: 768px) {
+    main {
+        margin: 16px;
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+    }
 }
